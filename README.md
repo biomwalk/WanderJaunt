@@ -1,4 +1,4 @@
-# WanderJaunt App
+# WanderJauntApp
 
 'WanderJaunt: A Traveller's Dream'
 
