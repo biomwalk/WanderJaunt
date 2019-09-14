@@ -12,22 +12,26 @@ class ReviewTripPage extends StatefulWidget {
 } //ReviewTripPage
 
 class _ReviewTripPageState extends State<ReviewTripPage> {
+
+  String userName = "Stacey Warren";
+  bool isSwitched = false;
+  bool isSwitched2 = false;
+  String propertyName = "Lance";
+  double stars = 4.5;
+  int numStays = 12;
+  String checkIn = "Sept 15";
+  String checkOut = "Sept 20";
+  int numGuests = 1;
+
   @override
   Widget build(BuildContext context) {
-    bool isSwitched = false;
-    bool isSwitched2 = false;
-    String name = "Lance";
+
     double nightlyCost = 114.69;
     double fees = 104;
-    double discount = .2;
+    double discount = (isSwitched == true) ? .2  : 0;
     int numNights = 7;
     double discountCost = (nightlyCost * numNights) * discount;
     double total = nightlyCost * numNights - discountCost + fees;
-    double stars = 4.5;
-    int numStays = 12;
-    String checkIn = "Sept 15";
-    String checkOut = "Sept 20";
-    int numGuests = 1;
     String guestState = (numGuests == 1) ? "Guest" : "Guests";
 
     return Scaffold(
@@ -71,7 +75,7 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
           child: ListView(
             children: <Widget>[
               UserAccountsDrawerHeader(
-                accountName: Text('Stacey Warren'),
+                accountName: Text(userName),
                 accountEmail: Text('StaceyWarren@email.com'),
                 currentAccountPicture: GestureDetector(
                   onTap: (){
@@ -102,7 +106,7 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
                       title: Text('Blog'),
                     ), //ListTile
                   ], //Children
-                ), //child: Listtitle
+                ), //Expansiontile
                 splashColor: Color(0xFFff9d5c)
               ), //Inkwell
 
@@ -119,7 +123,7 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
                       title: Text('Home Owners'),
                     ), //ListTile
                   ], //Children
-                ), //ListTitle
+                ), //ExpansionTitle
               ), //Inkwell
 
               InkWell(
@@ -135,7 +139,7 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
                       title: Text('Terms of Service'),
                     ), //ListTile
                   ], //Children
-                ), //ListTitle
+                ), //ExpansionTitle
               ), //Inkwell
 
               InkWell(
@@ -151,7 +155,7 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
                       title: Text('Contact Us'),
                     ), //ListTile
                   ], //Children
-                ), //ListTitle
+                ), //ExpansionTtile
               ), //Inkwell
 
               Divider(),
@@ -198,7 +202,7 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
                 width: double.infinity,
                 child: Container(
                   child: Text (
-                    name,
+                    propertyName,
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       fontSize: 30.0,
@@ -330,6 +334,56 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
               ), //Row
               SizedBox(height: 10.0),
               Divider(),
+
+              // ExpansionTile(
+              //   title: Text(
+              //     'Change Payment Method',
+              //     textAlign: TextAlign.left,
+              //     style: TextStyle(
+              //       fontSize: 15.0,
+              //       color: Colors.white
+              //     ) //style
+              //   ), //Text
+              //   children: <Widget> [
+              //     ListTile(
+              //       title: Text(
+              //         'ApplePay',
+              //         style: TextStyle(
+              //           fontSize: 15.0,
+              //           color: Colors.white
+              //         ) //style
+              //       ),
+              //     ), //ListTile
+              //     ListTile(
+              //       title: Text(
+              //         'Venmo',
+              //         style: TextStyle(
+              //           fontSize: 15.0,
+              //           color: Colors.white
+              //         ) //style
+              //       ),
+              //     ), //ListTile
+              //     ListTile(
+              //         title: Text(
+              //           'Card #1',
+              //           style: TextStyle(
+              //             fontSize: 15.0,
+              //             color: Colors.white
+              //           ) //style
+              //       ), //Text
+              //     ), //ListTile
+              //     ListTile(
+              //       title: Text(
+              //         'Card #2',
+              //         style: TextStyle(
+              //           fontSize: 15.0,
+              //           color: Colors.white
+              //         ), //style
+              //       ),
+              //     ), //ListTile
+              //   ], //Children
+              // ), //ExpansionTile
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget> [
@@ -392,7 +446,7 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
                         value: isSwitched2,
                         onChanged: (value) {
                           setState(()  {
-                            isSwitched = value;
+                            isSwitched2 = value;
                           }); //setState
                         }, //onChanged
                         activeTrackColor: Color(0xFFb9f1f1),
@@ -526,8 +580,9 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
                   ), //Align
                 ], //children Widget
               ), //FeesRow
-              SizedBox (height: 5),
+              SizedBox (height: 10),
               Divider(),
+              SizedBox (height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget> [
@@ -561,23 +616,26 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
                   ), //Align
                 ], //children Widget
               ), //Totalrow
-              SizedBox (height: 5),
-              FlatButton(
-                shape: StadiumBorder(),
-                onPressed: (){},
-                color: Color(0xFF00cccc),
-                child: Text(
-                  "Reserve!",
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    color: Colors.white
-                  ), //style
-                )
-              ) //Flatbuttton
+              SizedBox (height: 20),
             ], //children
           ), //Column
         ), //SingleChildScrollView
       ), //Child Container
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.fromLTRB(40, 20, 40, 30),
+        child: FlatButton (
+          shape: StadiumBorder(),
+          onPressed: (){},
+          color: Color(0xFF00cccc),
+          child: Text(
+            "Book!",
+            style: TextStyle(
+              fontSize: 20.0,
+              color: Colors.white
+            ), //style
+          ), //Text
+        ), //Flatbuttton
+      ), //Padding
     ); //Scaffold
   } //Widget BuildContext
 
@@ -585,7 +643,7 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
     Navigator.of(context).push(
       MaterialPageRoute<void>(
         builder: (BuildContext context) {
-          return UserDashBoard("Stacey Warren");
+          return UserDashBoard(userName);
         }
       )
     );

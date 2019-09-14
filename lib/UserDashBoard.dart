@@ -1,11 +1,32 @@
 import 'package:flutter/material.dart';
+import 'PaymentMethods.dart';
+import 'Promotions.dart';
+import 'BeHost.dart';
+import 'Notifications.dart';
+import 'BizTravel.dart';
+import 'InvFriends.dart';
+import 'PersonalInfo.dart';
 
-class UserDashBoard extends StatelessWidget {
-  final String title;
-  List<IconData> icons = [Icons.person, Icons.credit_card, Icons.notifications, Icons.work];
-  List<String> headers = ["Personal Info", "Payment Methods", "Notifications", "Business Travel"];
-
+class UserDashBoard extends StatefulWidget {
   UserDashBoard(this.title);
+  final String title;
+
+  @override
+  _UserDashBoardState createState() => _UserDashBoardState(title);
+}
+
+class _UserDashBoardState extends State<UserDashBoard> {
+  String title;
+  _UserDashBoardState(this.title);
+
+
+  bool promoCode = false;
+  List<IconData> _accountIcons = [Icons.people, Icons.local_offer, Icons.home, Icons.person, Icons.credit_card, Icons.notifications, Icons.work];
+  List<String> _accountHeaders = ["Invite Friends", "Promotions", "Become a Host", "Account", "Payment Methods", "Notifications", "Business Travel"];
+  List<String> _subHeaders = ["Earn up to \$30 for each person you refer", "Enter Discount Code", "Hosting", "Edit Your Personal Info", "Update Payment Info", "Change Notification Preferences", "Setup Business Account"];
+  List<Widget> _pages = [InvFriends(), Promotions(), BeHost(), PersonalInfo(), PaymentMethods(), Notifications(), BizTravel()];
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -15,31 +36,58 @@ class UserDashBoard extends StatelessWidget {
           title,
         ), //title
       ), //appBar
-      body: _buildStack(),
+      body: Container(
+        child: SingleChildScrollView (
+          child:Column (
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget> [
+              SizedBox(height:30),
+              _buildStack(),
+            ], //Children
+          ), //Column
+        ), //SingleChildScrollView
+      ), //Container
     ); //Scaffold
   } //BuidWidget
 
   Widget _buildStack() {
     return ListView.builder(
-      padding: const EdgeInsets.all(16.0),
-      itemCount: icons.length,
+      shrinkWrap: true,
+      padding: EdgeInsets.all(16.0),
+      itemCount: _accountHeaders.length,
       itemBuilder: (context, i) {
         //if (i.isOdd) return Divider();
-        return (_buildRow(i));
+        return (_buildAccountRow(i));
       } //itemBuilder
+    ); //ListView builder
+  } //buildStack
+
+  Widget _buildAccountRow(int i) {
+    return ListTile(
+      subtitle: Text(
+        _subHeaders[i],
+      ),
+      title: Text(
+        _accountHeaders[i],
+      ), //Text
+      trailing: Icon(
+        _accountIcons[i],
+        color: Color(0xFF5c9dde),
+      ), //Icon
+      onTap: () {
+        _viewPage(_pages[i]);
+      },
+    ); //ListTile
+  } //buildAccountRow
+
+  void _viewPage(Widget page) {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (BuildContext context) {
+          return page;
+        }
+      )
     );
   }
 
-  Widget _buildRow(int i) {
-    return ListTile(
-      title: Text(
-        headers[i],
-      ),
-      trailing: Icon(
-        icons[i],
-        color: Colors.orange,
-      ),
-      onTap: () {},
-    );
-  }
 } //UserDashBoard
