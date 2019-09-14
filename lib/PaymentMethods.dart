@@ -8,6 +8,10 @@ class PaymentMethods extends StatelessWidget {
       appBar: AppBar (
         title: Text (
           "Payment",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ), //style
         ), //title
       ), //appBar
       body: Container(

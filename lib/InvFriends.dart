@@ -6,7 +6,11 @@ class InvFriends extends StatelessWidget {
     return Scaffold (
       appBar: AppBar (
         title: Text (
-          "Invite",
+          "Invite Friends",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ), //style
         ), //title
       ), //appBar
       body: Container(
@@ -20,7 +24,7 @@ class InvFriends extends StatelessWidget {
                 onPressed: (){},
                 color: Color(0xFF00cccc),
                 child: Text(
-                  "Invite",
+                  "Invite a Friend",
                   style: TextStyle(
                     fontSize: 20.0,
                     color: Colors.white

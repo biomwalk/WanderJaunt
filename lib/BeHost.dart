@@ -7,6 +7,10 @@ class BeHost extends StatelessWidget {
       appBar: AppBar (
         title: Text (
           "Hosting",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ), //style
         ), //title
       ), //appBar
       body: Container(

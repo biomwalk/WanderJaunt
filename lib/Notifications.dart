@@ -7,6 +7,10 @@ class Notifications extends StatelessWidget {
       appBar: AppBar (
         title: Text (
           "Notification Preferences",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ), //style
         ), //title
       ), //appBar
       body: Container(

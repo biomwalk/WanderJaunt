@@ -7,6 +7,10 @@ class BizTravel extends StatelessWidget {
       appBar: AppBar (
         title: Text (
           "Business Travel",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ), //style
         ), //title
       ), //appBar
       body: Container(

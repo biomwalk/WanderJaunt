@@ -16,7 +16,11 @@ class _PromotionsState extends State<Promotions> {
     return Scaffold (
       appBar: AppBar (
         title: Text (
-          "Edit Personal Info",
+          "Promotions",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ), //style
         ), //title
       ), //appBar
       body: Container(

@@ -8,6 +8,10 @@ class PersonalInfo extends StatelessWidget {
       appBar: AppBar (
         title: Text (
           "Edit Personal Info",
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ), //style
         ), //title
       ), //appBar
       body: Container(
@@ -45,7 +49,7 @@ class PersonalInfo extends StatelessWidget {
                   ), //style
                 ), //title
                 subtitle: Text(
-                  "Adams",
+                  "Warren",
                 ), //subtitle
                 trailing: Text(
                   "Edit",
@@ -83,7 +87,7 @@ class PersonalInfo extends StatelessWidget {
                   ), //style
                 ), //title
                 subtitle: Text(
-                  "StaceyAdams@email.com",
+                  "StaceyWarren@email.com",
                 ), //subtitle
                 trailing: Text(
                   "Edit",

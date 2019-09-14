@@ -21,13 +21,37 @@ class _SiteExplorerState extends State<SiteExplorer> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Careers'),
-        // This drop down menu demonstrates that Flutter widgets can be shown over the web view.
+        centerTitle: true,
+        iconTheme: IconThemeData(color: Colors.white),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget> [
+            Container(
+              child: Image.asset('images/WanderJauntIcon.png', fit: BoxFit.cover),
+            ), //Container
+            Container(
+              child: InkWell (
+                child: Text (
+                  "WanderJaunt",
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ), //style
+                ), //Text
+                onTap:(){},
+              ), //Inkwell
+            ), //Container
+          ], //children Widget
+        ), //Row
         actions: <Widget>[
-          NavigationControls(_controller.future),
-          Menu(_controller.future, () => _favorites),
-          _bookmarkButton(),
-        ], //actions Widget
+          IconButton(
+            icon: Icon(
+              Icons.message,
+            ), //Icon
+            onPressed: () {}
+          ), //IconButton
+        ], //actions
       ), //appbar
       body: WebView(
         initialUrl: surl,

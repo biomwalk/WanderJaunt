@@ -92,18 +92,21 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
                 ), //decoration
               ), //UserAccountsDrawerHeader
               InkWell(
-                onTap: (){
-                  _viewLink("https://boards.greenhouse.io/wanderjaunt");
-                },
                 child: ExpansionTile(
                   title: Text('Company'),
                   leading: Icon(Icons.home),
                   children: <Widget> [
                     ListTile(
                       title: Text('Careers'),
+                      onTap: (){
+                        _viewLink("https://boards.greenhouse.io/wanderjaunt");
+                      },
                     ), //ListTile
                     ListTile(
                       title: Text('Blog'),
+                      onTap: (){
+                        _viewLink("https://medium.com/@wanderjaunt");
+                      },
                     ), //ListTile
                   ], //Children
                 ), //Expansiontile
@@ -118,9 +121,15 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
                   children: <Widget> [
                     ListTile(
                       title: Text('Lease to WanderJaunt'),
+                      onTap: (){
+                        _viewLink("https://www.wanderjaunt.com/partnerships");
+                      },
                     ), //ListTile
                     ListTile(
                       title: Text('Home Owners'),
+                      onTap: (){
+                        _viewLink("https://wanderjaunt.com/homeowners");
+                      },
                     ), //ListTile
                   ], //Children
                 ), //ExpansionTitle
@@ -134,9 +143,15 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
                   children: <Widget> [
                     ListTile(
                       title: Text('Privacy Policy'),
+                      onTap: (){
+                        _viewLink("https://www.wanderjaunt.com/privacy-policy");
+                      },
                     ), //ListTile
                     ListTile(
                       title: Text('Terms of Service'),
+                      onTap: (){
+                        _viewLink("https://www.wanderjaunt.com/terms-of-service");
+                      },
                     ), //ListTile
                   ], //Children
                 ), //ExpansionTitle
@@ -150,9 +165,15 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
                   children: <Widget> [
                     ListTile(
                       title: Text('HouseRules'),
+                      onTap: (){
+                        _viewLink("https://www.wanderjaunt.com/house-rules");
+                      },
                     ), //ListTile
                     ListTile(
                       title: Text('Contact Us'),
+                      onTap: (){
+                        _viewLink("https://www.wanderjaunt.com/contact");
+                      },
                     ), //ListTile
                   ], //Children
                 ), //ExpansionTtile
@@ -622,7 +643,7 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
         ), //SingleChildScrollView
       ), //Child Container
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.fromLTRB(40, 20, 40, 30),
+        padding: EdgeInsets.fromLTRB(40, 15, 40, 15),
         child: FlatButton (
           shape: StadiumBorder(),
           onPressed: (){},

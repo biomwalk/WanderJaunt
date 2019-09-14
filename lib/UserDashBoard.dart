@@ -34,7 +34,16 @@ class _UserDashBoardState extends State<UserDashBoard> {
       appBar: AppBar (
         title: Text (
           title,
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ), //style
         ), //title
+        actions: <Widget>[
+          Container(
+            child: Image.asset('images/WanderJauntIcon.png', fit: BoxFit.cover),
+          ), //Container
+        ], //actions
       ), //appBar
       body: Container(
         child: SingleChildScrollView (
