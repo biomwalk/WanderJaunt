@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'ImageCarousel.dart';
+import 'UserDashBoard.dart';
+import 'SiteExplorer.dart';
 
 class ReviewTripPage extends StatefulWidget {
   ReviewTripPage({Key key, this.title}) : super(key: key);
@@ -29,8 +31,10 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
     String guestState = (numGuests == 1) ? "Guest" : "Guests";
 
     return Scaffold(
+      backgroundColor: Color(0xFF5c9dde),
       appBar: AppBar(
         centerTitle: true,
+        iconTheme: IconThemeData(color: Colors.white),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget> [
@@ -43,7 +47,8 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
                   "WanderJaunt",
                   style: TextStyle(
                     fontSize: 20.0,
-                    color: Colors.white
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ), //style
                 ), //Text
                 onTap:(){},
@@ -51,21 +56,10 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
             ), //Container
           ], //children Widget
         ), //Row
-        // title: InkWell (
-        //   child: Text(
-        //     widget.title,
-        //     style: TextStyle(
-        //       color: Colors.white
-        //     ) //style
-        //   ), //Child
-        //   onTap: () {},
-        // ), //Inkwell
-        iconTheme: IconThemeData(color: Colors.white),
         actions: <Widget>[
           IconButton(
             icon: Icon(
               Icons.message,
-              color: Colors.white,
             ), //Icon
             onPressed: () {}
           ), //IconButton
@@ -77,22 +71,26 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
           child: ListView(
             children: <Widget>[
               UserAccountsDrawerHeader(
-                accountName: Text('Brandon Walker'),
-                accountEmail: Text('biomwalk@gmail.com'),
+                accountName: Text('Stacey Warren'),
+                accountEmail: Text('StaceyWarren@email.com'),
                 currentAccountPicture: GestureDetector(
-                  onTap: (){},
+                  onTap: (){
+                    _viewProfile();
+                  },
                   child: CircleAvatar(
-                    backgroundColor: Colors.black,
-                    child: Icon(Icons.person, color: Colors.white,),
+                    backgroundImage: AssetImage ("images/StaceyWarren.jpg"),
+                    //backgroundColor: Colors.black,
+                    //child: Icon(Icons.person, color: Colors.white,),
                   ), //CircleAvatar
                 ), //currentAccountPicture
                 decoration: BoxDecoration(
-                  color: Color(0xFFff9d5c)
+                  //color: Color(0xFFffffff)
                 ), //decoration
               ), //UserAccountsDrawerHeader
-
               InkWell(
-                onTap: (){},
+                onTap: (){
+                  _viewLink("https://boards.greenhouse.io/wanderjaunt");
+                },
                 child: ExpansionTile(
                   title: Text('Company'),
                   leading: Icon(Icons.home),
@@ -180,17 +178,13 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
                 child: ListTile(
                   title: Text('Logout'),
                   leading: Icon(Icons.power_settings_new, color: Colors.red),
-                  //onTap: () async {
-
-                    //Navigator.pushReplacementNamed(context, "/");
-                  //} //onTap async
+                  onTap: (){} //onTap
                 ), //ListTitle
               ), //Inkwell
             ], //Children Widget
           ), //ListView
         ),
       ), //drawer
-      backgroundColor: Color(0xFF5c9dde),
       body: Container (
         child: SingleChildScrollView(
           padding: EdgeInsets.all(20.0),
@@ -199,16 +193,6 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
             children: <Widget> [
               SizedBox (height: 40),
               ImageCarousel(),
-              // Container(
-              //   height: MediaQuery.of(context).size.height / 4,
-              //   decoration: BoxDecoration(
-              //     borderRadius: new BorderRadius.circular(9.0),
-              //     image: DecorationImage(
-              //       image: AssetImage("images/Lance.jpg"),
-              //       fit: BoxFit.fill,
-              //     ) //DecorationImage
-              //   ) //BoxDecoration
-              // ), //Container
               SizedBox(height: 20),
               SizedBox(
                 width: double.infinity,
@@ -353,14 +337,14 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Container(
-                        child: Text (
-                          "Apply Promo Code?",
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontSize: 20.0,
-                            color: Colors.white
-                          ), //style
-                        ), //Text
+                          child: Text (
+                            "Apply Promo Code?",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              color: Colors.white
+                            ), //style
+                          ), //Text
                       ), //Container
                     ), //Align
                   ), //Expanded
@@ -380,7 +364,7 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
                     ), //Container
                   ), //Align
                 ], //children Widget
-              ), //row
+              ), //PromoCodeRow
               SizedBox(height: 5.0),
               Divider(),
               Row(
@@ -417,7 +401,7 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
                     ), //Container
                   ), //Align
                 ], //children Widget
-              ), //row
+              ), //BusinessTriprow
               Divider(),
               SizedBox(height: 10.0),
               Row(
@@ -437,12 +421,12 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
                             color: Colors.white
                           ), //style
                         ), //Text
-                      ),
+                      ), //GestureDetector
                       ), //Container
                     ), //Align
                   ), //Expanded
                 ], //children Widget
-              ), //row
+              ), //TaxesandFees info row
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget> [
@@ -577,7 +561,9 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
                   ), //Align
                 ], //children Widget
               ), //Totalrow
+              SizedBox (height: 5),
               FlatButton(
+                shape: StadiumBorder(),
                 onPressed: (){},
                 color: Color(0xFF00cccc),
                 child: Text(
@@ -594,4 +580,24 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
       ), //Child Container
     ); //Scaffold
   } //Widget BuildContext
+
+  void _viewProfile() {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (BuildContext context) {
+          return UserDashBoard("Stacey Warren");
+        }
+      )
+    );
+  } //viewProfile
+
+  void _viewLink(url) {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        builder: (BuildContext context) {
+          return SiteExplorer(url);
+        }
+      )
+    );
+  }
 } //_ReviewTripPageState

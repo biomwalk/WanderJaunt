@@ -22,10 +22,11 @@ class ImageCarousel extends StatelessWidget {
           AssetImage("images/Lance8.jpg"),
           AssetImage("images/Lance9.jpg"),
           AssetImage("images/Lance10.jpg"),
-        ],
-        animationCurve: Curves.linear,
-        animationDuration: Duration (seconds: 7),
-      ),
-    );
-  }
-}
+        ], //Images
+        //animationCurve: Curves.linear,
+        autoplay: false,
+        //animationDuration: Duration (seconds: 7),
+      ), //Carousel
+    ); //Container
+  } //BuildContext
+} //ImageCarousel
