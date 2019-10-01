@@ -31,7 +31,7 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
     double discount = (isSwitched == true) ? -.2  : 0;
     int numNights = 7;
     double discountCost = (nightlyCost * numNights) * discount;
-    double total = nightlyCost * numNights - discountCost + fees;
+    double total = nightlyCost * numNights + discountCost + fees;
     String guestState = (numGuests == 1) ? "Guest" : "Guests";
 
     return Scaffold(
