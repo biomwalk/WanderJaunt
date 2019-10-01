@@ -28,7 +28,7 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
 
     double nightlyCost = 114.69;
     double fees = 104;
-    double discount = (isSwitched == true) ? .2  : 0;
+    double discount = (isSwitched == true) ? -.2  : 0;
     int numNights = 7;
     double discountCost = (nightlyCost * numNights) * discount;
     double total = nightlyCost * numNights - discountCost + fees;
@@ -318,7 +318,7 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
                               color: Colors.white
                             ), //style
                           ), //Text
-                        ],
+                        ], //children
                       ), //Column
                     ), //child Container
                   ), //GestureDetector
@@ -557,7 +557,7 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
                     alignment: Alignment.centerRight,
                     child: Container(
                       child: Text (
-                        "-\$" + discountCost.toStringAsFixed(0),
+                        "\$" + discountCost.toStringAsFixed(0),
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           fontSize: 20.0,
@@ -643,7 +643,7 @@ class _ReviewTripPageState extends State<ReviewTripPage> {
         ), //SingleChildScrollView
       ), //Child Container
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.fromLTRB(40, 15, 40, 15),
+        padding: EdgeInsets.fromLTRB(40, 20, 40, 20),
         child: FlatButton (
           shape: StadiumBorder(),
           onPressed: (){},
